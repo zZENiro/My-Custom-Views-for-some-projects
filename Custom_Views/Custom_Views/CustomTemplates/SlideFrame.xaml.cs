@@ -14,30 +14,54 @@ namespace Custom_Views.CustomTemplates
     {
         protected readonly BindableProperty RadiusProperty =
             BindableProperty.Create(
-                "CornerRadius",
+                "Radius",
                 typeof(float),
                 typeof(SlideFrame),
-                -1f
-                );
+                -1f);
 
         protected readonly BindableProperty FrameDifferenceProperty =
             BindableProperty.Create(
                 "FrameDifference",
                 typeof(float),
                 typeof(SlideFrame),
-                10);
+                10f);
 
         protected readonly BindableProperty FramesThicknessProperty =
             BindableProperty.Create(
                 "FramesThickness",
                 typeof(float),
-                typeof()
-                );
+                typeof(SlideFrame),
+                2f);
 
-        public new float CornerRadius
+        protected readonly BindableProperty ContentBoundsProperty =
+            BindableProperty.Create(
+                "ContentBoundsDifference",
+                typeof(float),
+                typeof(SlideFrame),
+                2f);
+
+        public float Radius
         {
             get => (float)GetValue(RadiusProperty);
-            set => SetValue(CornerRadiusProperty, value);
+            set => SetValue(RadiusProperty, value);
+        }
+
+        public float FrameDifference
+        {
+            get => (float)GetValue(FrameDifferenceProperty);
+            set => SetValue(FrameDifferenceProperty, value);
+        }
+
+        public float FrameThickness
+        {
+            get => (float)GetValue(FramesThicknessProperty);
+            set => SetValue(FramesThicknessProperty, value);
+        }
+
+        public float ContentBounds
+        {
+            get => (float)GetValue(ContentBoundsProperty);
+            set => SetValue(ContentBoundsProperty, value);
         }
 
         public SlideFrame()

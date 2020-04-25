@@ -75,8 +75,10 @@ namespace Custom_Views.Droid.Renderers
             readonly SlideFrame _frame;
             readonly Func<double, float> _convertToPixels;
 
-            int _contentDiff = 20;
-            int _boundsDiff = 15;
+            float _radius;
+            float _frameThickness;
+            float _contentBounds;
+            float _boundsDiff;
             bool _isDisposed;
             Bitmap _normalBitmap;
 
@@ -84,6 +86,11 @@ namespace Custom_Views.Droid.Renderers
             {
                 // _frame - основной объект, с которым производится логика прорисовки, т.к. он ссылается на свойство Element рендерера
                 _frame = frame;
+
+                _radius = _frame.Radius;
+                _frameThickness = _frame.FrameThickness;
+                _contentBounds = _frame.ContentBounds;
+                _boundsDiff = _frame.FrameDifference;
 
                 _convertToPixels = convertToPixels;
 
@@ -178,8 +185,8 @@ namespace Custom_Views.Droid.Renderers
                 using (var path = new Path())
                 using (Path.Direction direction = Path.Direction.Cw)
                 using (Paint.Style style = Paint.Style.Fill)
-                using (var rect = new RectF(_bounds + _boundsDiff + _contentDiff, _bounds + _boundsDiff + _contentDiff, 
-                    width - (_bounds + _boundsDiff + _contentDiff), height - (_bounds + _boundsDiff + _contentDiff)))
+                using (var rect = new RectF(_bounds + _boundsDiff + _contentBounds, _bounds + _boundsDiff + _contentBounds, 
+                    width - (_bounds + _boundsDiff + _contentBounds), height - (_bounds + _boundsDiff + _contentBounds)))
                 {
                     float rx = _convertToPixels(cornerRadius);
                     float ry = _convertToPixels(cornerRadius);
@@ -206,14 +213,14 @@ namespace Custom_Views.Droid.Renderers
                     left: _bounds + _boundsDiff,
                     top: _bounds + _boundsDiff,
                     right: width - (_bounds + _boundsDiff),
-                    bottom: height - (_bounds + _boundsDiff))) // FIXME: Параметризировать разность между фреймами (_boundeDiff)
+                    bottom: height - (_bounds + _boundsDiff)))
                 {
                     float rx = _convertToPixels(cornerRadius);
                     float ry = _convertToPixels(cornerRadius);
                     path.AddRoundRect(rect, rx, ry, direction);
                     path.AddRoundRect(innerRect, rx, ry, direction);
 
-                    paint.StrokeWidth = 4; // FIXME: параметризовать толщину линий
+                    paint.StrokeWidth = _frameThickness; 
                     paint.SetStyle(style);
                     paint.Color = _frame.BorderColor.ToAndroid();
 
@@ -244,13 +251,11 @@ namespace Custom_Views.Droid.Renderers
 
             void DrawCanvas(ACanvas canvas, int width, int height, bool pressed)
             {
-                float cornerRadius = _frame.CornerRadius; 
+                if (_radius == -1f)
+                    _radius = 0f; // default corner radius
 
-                if (cornerRadius == -1f)
-                    cornerRadius = 0f; // default corner radius
-
-                DrawBackground(canvas, width, height, cornerRadius, pressed);
-                DrawOutline(canvas, width, height, cornerRadius);
+                DrawBackground(canvas, width, height, _radius, pressed);
+                DrawOutline(canvas, width, height, _radius);
             }
         }
     }
