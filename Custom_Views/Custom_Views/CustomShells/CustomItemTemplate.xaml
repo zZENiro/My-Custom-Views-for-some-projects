@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Custom_Views.CustomShells.CustomItemTemplate"
+             BackgroundColor="Transparent"
+             x:Name="this"
+             HeightRequest="100"
+             BindingContext="{x:Reference this}">
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="3*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Label VerticalOptions="CenterAndExpand" 
+           HorizontalOptions="CenterAndExpand" 
+           Grid.Column="1" 
+           Text="{Binding Title}"/>
+
+</Grid>
