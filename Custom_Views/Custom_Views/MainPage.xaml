@@ -26,11 +26,11 @@
                 <local:SlideFrame Grid.Row="0" Grid.Column="0" 
                                   Grid.ColumnSpan="3" Grid.RowSpan="3" 
                                   BorderColor="Black" 
-                                  BackgroundColor="CadetBlue"
-                                  Radius="100"
-                                  FrameDifference="20"
-                                  FrameThickness="10"
-                                  ContentBounds="8"/>
+                                  BackgroundColor="Red"
+                                  Radius="10"
+                                  FrameDifference="0"
+                                  FrameThickness="5"
+                                  ContentBounds="10"/>
 
             </Grid>
         </ScrollView>
