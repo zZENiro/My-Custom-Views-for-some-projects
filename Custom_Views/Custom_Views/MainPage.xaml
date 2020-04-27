@@ -23,14 +23,21 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <local:SlideFrame Grid.Row="0" Grid.Column="0" 
-                                  Grid.ColumnSpan="3" Grid.RowSpan="3" 
-                                  BorderColor="Black" 
-                                  BackgroundColor="Red"
-                                  Radius="10"
-                                  FrameDifference="0"
-                                  FrameThickness="5"
-                                  ContentBounds="10"/>
+                <local:SlideFrame Grid.Row="0"
+                                  Grid.Column="0"
+                                  BackgroundColor="Accent"
+                                  Radius="20"/>
+
+                <local:GradientFrame Grid.Row="1" 
+                                     Grid.Column="1" 
+                                     Alpha="100"
+                                     Radius="20"
+                                     BorderAlpha="255"
+                                     BorderColor="NavajoWhite"
+                                     FrameThickness="20"
+                                     StartColor="Blue"
+                                     EndColor="Accent"
+                                     />
 
             </Grid>
         </ScrollView>

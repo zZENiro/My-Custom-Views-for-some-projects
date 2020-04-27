@@ -47,6 +47,58 @@ namespace Custom_Views.CustomTemplates
                 typeof(GradientFrame),
                 255);
 
+        protected readonly BindableProperty BorderAlphaProperty =
+            BindableProperty.Create(
+                "BorderAlpha",
+                typeof(int),
+                typeof(GradientFrame),
+                255);
+
+        protected readonly BindableProperty ShadowRadiusProperty =
+            BindableProperty.Create(
+                "ShadowRadius",
+                typeof(float),
+                typeof(GradientFrame),
+                0f);
+
+        protected readonly BindableProperty ShadowDxProperty =
+            BindableProperty.Create(
+                "ShadowDx",
+                typeof(float),
+                typeof(GradientFrame),
+                0f);
+
+        protected readonly BindableProperty ShadowDyProperty =
+            BindableProperty.Create(
+                "ShadowDy",
+                typeof(float),
+                typeof(GradientFrame),
+                0f);
+
+        public float ShadowDy
+        {
+            get => (float)GetValue(ShadowDyProperty);
+            set => SetValue(ShadowDyProperty, value);
+        }
+
+        public float ShadowDx
+        {
+            get => (float)GetValue(ShadowDxProperty);
+            set => SetValue(ShadowDxProperty, value);
+        }
+
+        public float ShadowRadius
+        {
+            get => (float)GetValue(ShadowRadiusProperty);
+            set => SetValue(ShadowRadiusProperty, value);
+        }
+
+        public int BorderAlpha
+        {
+            get => (int)GetValue(BorderAlphaProperty);
+            set => SetValue(BorderAlphaProperty, value);
+        }
+
         public float FrameThickness
         {
             get => (float)GetValue(FrameThicknessProperty);

@@ -185,15 +185,18 @@ namespace Custom_Views.Droid.Renderers
                 using (var path = new Path())
                 using (Path.Direction direction = Path.Direction.Cw)
                 using (Paint.Style style = Paint.Style.Fill)
-                using (var rect = new RectF(_bounds + _boundsDiff + _contentBounds, _bounds + _boundsDiff + _contentBounds, 
-                    width - (_bounds + _boundsDiff + _contentBounds), height - (_bounds + _boundsDiff + _contentBounds)))
+                using (var rect = new RectF(
+                    _bounds + _boundsDiff + _contentBounds, 
+                    _bounds + _boundsDiff + _contentBounds, 
+                    width - (_bounds + _boundsDiff + _contentBounds), 
+                    height - (_bounds + _boundsDiff + _contentBounds)))
                 {
                     float rx = _convertToPixels(cornerRadius);
                     float ry = _convertToPixels(cornerRadius);
-
                     path.AddRoundRect(rect, rx, ry, direction);
 
                     global::Android.Graphics.Color color = _frame.BackgroundColor.ToAndroid();
+
 
                     paint.SetStyle(style);
                     paint.Color = color;
