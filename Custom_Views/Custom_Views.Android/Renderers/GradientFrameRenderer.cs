@@ -124,12 +124,13 @@ namespace Custom_Views.Droid.Renderers
                     painter.SetShader(gradient);
                     painter.SetStyle(style);
 
-                    painter.SetShadowLayer(
-                        radius:     _frame.ShadowRadius, 
-                        dx:         _frame.ShadowDx, 
-                        dy:         _frame.ShadowDy, 
+                    // FIXME: Тени рисуется и видно её резкие грани, где она заканчивает рисоваться  
+                    painter.SetShadowLayer(              
+                        radius: _frame.ShadowRadius,
+                        dx: _frame.ShadowDx,
+                        dy: _frame.ShadowDy,
                         shadowColor: Android.Graphics.Color.Black);
-                    
+                
                     canvas.DrawPath(path, painter);
                 }
             }

@@ -15,30 +15,17 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <local:SlideFrame Grid.Row="0"
-                                  Grid.Column="0"
-                                  BackgroundColor="Accent"
-                                  Radius="20"/>
-
-                <local:GradientFrame Grid.Row="1" 
-                                     Grid.Column="1" 
-                                     Alpha="100"
-                                     Radius="20"
-                                     BorderAlpha="255"
-                                     BorderColor="NavajoWhite"
-                                     FrameThickness="20"
-                                     StartColor="Blue"
-                                     EndColor="Accent"
-                                     />
-
+               
             </Grid>
         </ScrollView>
     </ContentPage.Content>
