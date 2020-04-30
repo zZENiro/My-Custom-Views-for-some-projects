@@ -9,24 +9,27 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <local:RoundButton Text="Hello" />
+            <!--<StackLayout>
+                
+                <local:GradientButton StartColor="Red" EndColor="Blue" BorderRadius="0"/>
 
-                <!--<local:GradientFrame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                     HasShadow="True" ShadowRadius="5"
-                                     StartColor="blue"
-                                     EndColor="Red"
-                                     Alpha="100"
-                                     Radius="10"
-                                     BorderAlpha="255"
-                                     BorderColor="Transparent">
+            </StackLayout>-->
 
-                    <Label Text="Hello"/>
-                    
-                    
-                    
-                </local:GradientFrame>-->
-            </StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <local:GradientButton Grid.Row="1" Grid.Column="1" StartColor="Red" EndColor="Blue"/>
+
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
     

@@ -42,7 +42,7 @@ namespace Custom_Views.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);
-
+                
             if (e.NewElement != null && e.OldElement == null)
             {
                 _targetElem = e.NewElement as GradientFrame;
