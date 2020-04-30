@@ -60,6 +60,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\CustomShellRenderer.cs" />
     <Compile Include="Renderers\GradientFrameRenderer.cs" />
+    <Compile Include="Renderers\RoundedButtonRenderer.cs" />
     <Compile Include="Renderers\SlideFrameRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,24 +9,24 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
+            <StackLayout>
+                <local:RoundButton Text="Hello" />
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <!--<local:GradientFrame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                     HasShadow="True" ShadowRadius="5"
+                                     StartColor="blue"
+                                     EndColor="Red"
+                                     Alpha="100"
+                                     Radius="10"
+                                     BorderAlpha="255"
+                                     BorderColor="Transparent">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-               
-            </Grid>
+                    <Label Text="Hello"/>
+                    
+                    
+                    
+                </local:GradientFrame>-->
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
     

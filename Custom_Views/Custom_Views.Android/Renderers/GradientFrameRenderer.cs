@@ -62,6 +62,7 @@ namespace Custom_Views.Droid.Renderers
             #region
 
             readonly Func<double, float> _convertToPixels;
+            const int _shadowOpacity = 15;
 
             GradientFrame _frame;
             Bitmap _normalBitmap;
@@ -88,7 +89,7 @@ namespace Custom_Views.Droid.Renderers
                 using (var path = new Path())
                 using (var direction = Path.Direction.Cw)
                 using (var style = Paint.Style.Stroke)
-                using (var outlineRect = new RectF(0, 0, width, height))
+                using (var outlineRect = new RectF(_shadowOpacity, _shadowOpacity, width - _shadowOpacity, height - _shadowOpacity))
                 {
                     float rx = _convertToPixels(radius);
                     float ry = _convertToPixels(radius);
@@ -98,6 +99,17 @@ namespace Custom_Views.Droid.Renderers
                     painter.StrokeWidth = _frame.FrameThickness;
                     painter.Color = _frame.BorderColor.ToAndroid();
                     painter.Alpha = _frame.BorderAlpha;
+
+                    if (_frame.HasShadow)
+                    {
+                        // FIXME: Тень рисуется и видно её резкие грани, где она заканчивает рисоваться  
+                        // FIXED
+                        painter.SetShadowLayer(
+                            radius: _frame.ShadowRadius,
+                            dx: _frame.ShadowDx,
+                            dy: _frame.ShadowDy,
+                            shadowColor: Android.Graphics.Color.Black);
+                    }
 
                     canvas.DrawPath(path, painter);
                 }
@@ -109,12 +121,12 @@ namespace Custom_Views.Droid.Renderers
                 using (var path = new Path())
                 using (var direction = Path.Direction.Cw)
                 using (var style = Paint.Style.Fill)
-                using (var rect = new RectF(0, 0, width, height))
+                using (var rect = new RectF(_shadowOpacity, _shadowOpacity, width - _shadowOpacity, height - _shadowOpacity))
                 {
-                    var gradient = new LinearGradient(0, 0, 0, (float)height * 2, 
-                        color0: _frame.StartColor.ToAndroid(),                              
-                        color1: _frame.EndColor.ToAndroid(),                           
-                        tile:   Shader.TileMode.Mirror);
+                    var gradient = new LinearGradient(0, 0, 0, ((float)height - 15) * 2,
+                        color0: _frame.StartColor.ToAndroid(),
+                        color1: _frame.EndColor.ToAndroid(),
+                        tile: Shader.TileMode.Mirror);
 
                     float rx = _convertToPixels(radius);
                     float ry = _convertToPixels(radius);
@@ -124,13 +136,6 @@ namespace Custom_Views.Droid.Renderers
                     painter.SetShader(gradient);
                     painter.SetStyle(style);
 
-                    // FIXME: Тени рисуется и видно её резкие грани, где она заканчивает рисоваться  
-                    painter.SetShadowLayer(              
-                        radius: _frame.ShadowRadius,
-                        dx: _frame.ShadowDx,
-                        dy: _frame.ShadowDy,
-                        shadowColor: Android.Graphics.Color.Black);
-                
                     canvas.DrawPath(path, painter);
                 }
             }
@@ -154,10 +159,10 @@ namespace Custom_Views.Droid.Renderers
             void DrawCanvas(Canvas canvas, int width, int height, bool pressed)
             {
                 if (_frame.Radius == -1f)
-                    _frame.Radius = 0f; 
+                    _frame.Radius = 0f;
 
-                DrawBackground(canvas, width, height, _frame.Radius, pressed);
                 DrawOutline(canvas, width, height, _frame.Radius);
+                DrawBackground(canvas, width, height, _frame.Radius, pressed);
             }
 
             public override void Draw(Canvas canvas)
@@ -220,7 +225,7 @@ namespace Custom_Views.Droid.Renderers
             {
 
             }
-            
+
             #endregion
         }
     }
